@@ -40,7 +40,7 @@ img { max-width: 100%; display: block; }
   min-height: 55vh;
   display: flex;
   align-items: flex-end;
-  background-image: url('Volby-Slavonice.jpeg');
+  background-image: url('https://raw.githubusercontent.com/InvestFriends/volbyvyhrajeme/main/Volby-Slavonice.jpeg');
   background-size: cover;
   background-position: center 40%;
   page-break-after: avoid;
