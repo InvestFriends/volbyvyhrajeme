@@ -1,0 +1,411 @@
+/* ===========================
+   TOKENS & RESET
+   =========================== */
+:root {
+  --green-dark: #1a3a1a;
+  --green-mid: #2d5a2d;
+  --green-accent: #3d7a3d;
+  --green-light: #e8f0e8;
+  --white: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-muted: #555;
+  --card-bg: #ffffff;
+  --card-border: #e0e8e0;
+  --shadow: 0 2px 16px rgba(30,58,30,0.08);
+  --radius: 12px;
+  --radius-sm: 6px;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  color: var(--text-dark);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+
+ul { list-style: none; }
+
+/* ===========================
+   LAYOUT
+   =========================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section--light { background: #f6faf6; }
+.section--dark  { background: var(--green-dark); }
+.section--green { background: var(--green-mid); }
+
+.text-center { text-align: center; }
+
+/* ===========================
+   HERO
+   =========================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0d2b0d 0%, #1e4a1e 40%, #2d6a2d 70%, #1a3a1a 100%);
+  overflow: hidden;
+}
+
+/* Decorative texture overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(60,120,60,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 70%, rgba(20,80,20,0.3) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Subtle grid pattern */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  padding: 2rem 1.5rem;
+  max-width: 800px;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--green-accent);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  line-height: 1.5;
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--white);
+  color: var(--green-dark);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 2.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+/* ===========================
+   SECTION TITLES
+   =========================== */
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--green-dark);
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--green-accent);
+  border-radius: 2px;
+  margin: 1rem auto 0;
+}
+
+.section-title--white {
+  color: var(--white);
+}
+
+.section-title--white::after {
+  background: rgba(255,255,255,0.5);
+}
+
+/* ===========================
+   PROGRAM CARDS
+   =========================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(30,58,30,0.12);
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card ul li {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.card ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--green-accent);
+  font-size: 0.8rem;
+  top: 0.1em;
+}
+
+/* ===========================
+   TEAM QUOTE
+   =========================== */
+.team-quote {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: rgba(255,255,255,0.92);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ===========================
+   CANDIDATES
+   =========================== */
+.candidates-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.candidates-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.candidates-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 4px rgba(30,58,30,0.06);
+  transition: background 0.15s;
+}
+
+.candidates-list li:hover {
+  background: var(--green-light);
+}
+
+.candidates-list .num {
+  font-weight: 800;
+  color: var(--green-accent);
+  min-width: 2rem;
+  font-size: 1rem;
+}
+
+/* ===========================
+   VILLAGES
+   =========================== */
+.villages-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.village-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4/3;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  transition: transform 0.2s;
+}
+
+.village-card:hover {
+  transform: scale(1.03);
+}
+
+.village-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s;
+}
+
+.village-card:hover .village-img {
+  transform: scale(1.05);
+}
+
+.village-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem 1rem 0.65rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+.footer {
+  background: var(--green-dark);
+  color: rgba(255,255,255,0.7);
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.footer-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.35rem;
+}
+
+.footer-sub {
+  font-size: 0.9rem;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .villages-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 3.5rem 0; }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .candidates-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .villages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .villages-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .candidates-list li {
+    font-size: 0.95rem;
+  }
+}
