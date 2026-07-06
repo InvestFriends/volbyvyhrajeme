@@ -37,7 +37,7 @@ img { max-width: 100%; display: block; }
    =========================== */
 .hero {
   position: relative;
-  min-height: 55vh;
+  min-height: 60vh;
   display: flex;
   align-items: flex-start;
   background-image: url('https://raw.githubusercontent.com/InvestFriends/volbyvyhrajeme/main/Volby-Slavonice.jpeg');
