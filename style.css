@@ -39,7 +39,7 @@ img { max-width: 100%; display: block; }
   position: relative;
   min-height: 55vh;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   background-image: url('https://raw.githubusercontent.com/InvestFriends/volbyvyhrajeme/main/Volby-Slavonice.jpeg');
   background-size: cover;
   background-position: center 60%;
@@ -49,15 +49,17 @@ img { max-width: 100%; display: block; }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10,30,10,0.82) 0%, rgba(10,30,10,0.35) 60%, transparent 100%);
+  background: linear-gradient(to left, rgba(10,30,10,0.75) 0%, rgba(10,30,10,0.3) 50%, transparent 100%);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
   color: var(--white);
-  padding: 2.5rem 2rem 3rem;
-  max-width: 800px;
+  padding: 2.5rem 2.5rem 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  text-align: right;
 }
 
 .badge {
@@ -71,6 +73,7 @@ img { max-width: 100%; display: block; }
   padding: 0.3rem 0.9rem;
   border-radius: 999px;
   margin-bottom: 1rem;
+  margin-left: auto;
 }
 
 .hero h1 {
@@ -228,42 +231,46 @@ img { max-width: 100%; display: block; }
    =========================== */
 .candidates-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 2.5rem;
-  max-width: 760px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .candidate-row {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.7rem;
   padding: 0.55rem 0.75rem;
-  border-bottom: 1px solid var(--border);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green-accent);
+  border-radius: 3px;
   background: #fff;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
-}
-
-.candidate-row:last-child {
-  border-bottom: none;
 }
 
 .cnum {
   font-weight: 900;
   color: var(--green-accent);
-  font-size: 1rem;
-  min-width: 1.6rem;
+  font-size: 0.95rem;
+  min-width: 1.4rem;
   text-align: right;
+  flex-shrink: 0;
 }
 
 /* ===========================
    VILLAGES — REAL PHOTOS
    =========================== */
 .villages-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.85rem;
+}
+
+.village-card {
+  flex: 0 0 calc((100% - 3 * 0.85rem) / 4);
 }
 
 .village-card {
@@ -325,19 +332,22 @@ img { max-width: 100%; display: block; }
    =========================== */
 @media (max-width: 1024px) {
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
-  .villages-grid { grid-template-columns: repeat(3, 1fr); }
+  .candidates-grid { grid-template-columns: repeat(2, 1fr); }
+  .village-card { flex: 0 0 calc((100% - 2 * 0.85rem) / 3); }
 }
 
 @media (max-width: 768px) {
   .section { padding: 2.5rem 0; }
   .cards-grid { grid-template-columns: 1fr; }
-  .candidates-grid { grid-template-columns: 1fr; }
-  .villages-grid { grid-template-columns: repeat(2, 1fr); }
+  .candidates-grid { grid-template-columns: repeat(2, 1fr); }
+  .village-card { flex: 0 0 calc((100% - 0.85rem) / 2); }
   .hero { min-height: 45vh; }
+  .hero-content { max-width: 100%; padding: 1.5rem 1.5rem 2rem; }
 }
 
 @media (max-width: 480px) {
-  .villages-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .candidates-grid { grid-template-columns: 1fr; }
+  .village-card { flex: 0 0 calc((100% - 0.85rem) / 2); }
 }
 
 /* ===========================
