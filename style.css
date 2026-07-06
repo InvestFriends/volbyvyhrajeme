@@ -42,7 +42,7 @@ img { max-width: 100%; display: block; }
   align-items: flex-end;
   background-image: url('https://raw.githubusercontent.com/InvestFriends/volbyvyhrajeme/main/Volby-Slavonice.jpeg');
   background-size: cover;
-  background-position: center 40%;
+  background-position: center 60%;
   page-break-after: avoid;
 }
 
@@ -189,7 +189,7 @@ img { max-width: 100%; display: block; }
 .team-photo {
   width: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 40%;
   max-height: 380px;
   filter: brightness(0.75);
 }
