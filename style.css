@@ -2,103 +2,61 @@
    TOKENS & RESET
    =========================== */
 :root {
-  --green-dark: #1a3a1a;
+  --green: #1e3a1e;
   --green-mid: #2d5a2d;
-  --green-accent: #3d7a3d;
-  --green-light: #e8f0e8;
+  --green-accent: #3a6e3a;
+  --green-light: #eaf2ea;
   --white: #ffffff;
-  --text-dark: #1a1a1a;
-  --text-muted: #555;
-  --card-bg: #ffffff;
-  --card-border: #e0e8e0;
-  --shadow: 0 2px 16px rgba(30,58,30,0.08);
-  --radius: 12px;
-  --radius-sm: 6px;
+  --text: #111111;
+  --text-muted: #444444;
+  --border: #c8d8c8;
   --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font);
-  color: var(--text-dark);
-  background: var(--white);
-  line-height: 1.6;
-}
-
-img { max-width: 100%; display: block; }
-
+body { font-family: var(--font); color: var(--text); background: #fff; line-height: 1.55; }
 ul { list-style: none; }
+img { max-width: 100%; display: block; }
 
 /* ===========================
    LAYOUT
    =========================== */
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-.section {
-  padding: 5rem 0;
-}
-
-.section--light { background: #f6faf6; }
-.section--dark  { background: var(--green-dark); }
-.section--green { background: var(--green-mid); }
-
-.text-center { text-align: center; }
+.section { padding: 3.5rem 0; }
+.section--candidates { background: var(--green-light); }
+.section--villages { background: var(--green); }
 
 /* ===========================
    HERO
    =========================== */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 55vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #0d2b0d 0%, #1e4a1e 40%, #2d6a2d 70%, #1a3a1a 100%);
-  overflow: hidden;
-}
-
-/* Decorative texture overlay */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(60,120,60,0.25) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 80% 70%, rgba(20,80,20,0.3) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-/* Subtle grid pattern */
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
+  align-items: flex-end;
+  background-image: url('Volby-Slavonice.jpeg');
+  background-size: cover;
+  background-position: center 40%;
+  page-break-after: avoid;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+  background: linear-gradient(to top, rgba(10,30,10,0.82) 0%, rgba(10,30,10,0.35) 60%, transparent 100%);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  text-align: center;
   color: var(--white);
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 2rem 3rem;
   max-width: 800px;
 }
 
@@ -106,217 +64,213 @@ ul { list-style: none; }
   display: inline-block;
   background: var(--green-accent);
   color: var(--white);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 0.35rem 1rem;
+  padding: 0.3rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.25);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 5vw, 3.8rem);
-  font-weight: 800;
-  line-height: 1.1;
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.08;
   letter-spacing: -0.01em;
-  margin-bottom: 1.25rem;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  margin-bottom: 0.85rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
 }
 
 .subtitle {
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  line-height: 1.5;
-  opacity: 0.9;
-  margin-bottom: 2.5rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  opacity: 0.92;
   font-weight: 400;
-}
-
-.btn-primary {
-  display: inline-block;
-  background: var(--white);
-  color: var(--green-dark);
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 0.85rem 2.2rem;
-  border-radius: 999px;
-  text-decoration: none;
-  letter-spacing: 0.03em;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  line-height: 1.5;
 }
 
 /* ===========================
    SECTION TITLES
    =========================== */
 .section-title {
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
   font-weight: 800;
-  color: var(--green-dark);
-  margin-bottom: 3rem;
+  color: var(--green);
+  margin-bottom: 2rem;
   text-align: center;
-  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--green-accent);
+  display: inline-block;
+  width: 100%;
 }
 
-.section-title::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: var(--green-accent);
-  border-radius: 2px;
-  margin: 1rem auto 0;
-}
-
-.section-title--white {
+.section--villages .section-title {
   color: var(--white);
-}
-
-.section-title--white::after {
-  background: rgba(255,255,255,0.5);
+  border-bottom-color: rgba(255,255,255,0.35);
 }
 
 /* ===========================
-   PROGRAM CARDS
+   PROGRAM CARDS — LEAFLET STYLE
    =========================== */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  padding: 2rem 1.75rem;
-  box-shadow: var(--shadow);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(30,58,30,0.12);
-}
-
-.card-icon {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--green-accent);
+  border-radius: 4px;
+  padding: 1.1rem 1.1rem 1.2rem;
+  background: #fff;
+  break-inside: avoid;
 }
 
 .card h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--green-dark);
-  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--green);
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  line-height: 1.3;
+}
+
+.card-num {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--green-accent);
+  opacity: 0.6;
+  flex-shrink: 0;
 }
 
 .card ul {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.35rem;
 }
 
 .card ul li {
-  font-size: 0.92rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
-  padding-left: 1.2rem;
+  padding-left: 1rem;
   position: relative;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .card ul li::before {
-  content: '▸';
+  content: '–';
   position: absolute;
   left: 0;
   color: var(--green-accent);
-  font-size: 0.8rem;
-  top: 0.1em;
 }
 
 /* ===========================
-   TEAM QUOTE
+   TEAM PHOTO
    =========================== */
+.section--team {
+  padding: 0;
+}
+
+.team-photo-wrap {
+  position: relative;
+  max-height: 380px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.team-photo {
+  width: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  max-height: 380px;
+  filter: brightness(0.75);
+}
+
+.team-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10,30,10,0.35);
+  padding: 2rem;
+}
+
 .team-quote {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  color: rgba(255,255,255,0.92);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: var(--white);
   font-style: italic;
+  font-weight: 600;
+  text-align: center;
   max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.7;
+  line-height: 1.55;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+}
+
+.team-quote span {
+  font-weight: 400;
+  font-style: italic;
+  display: block;
+  margin-top: 0.3rem;
 }
 
 /* ===========================
-   CANDIDATES
+   CANDIDATES — LEAFLET STYLE
    =========================== */
 .candidates-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem 3rem;
-  max-width: 800px;
+  gap: 0 2.5rem;
+  max-width: 760px;
   margin: 0 auto;
 }
 
-.candidates-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.candidates-list li {
+.candidate-row {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  font-size: 1.05rem;
-  font-weight: 500;
-  padding: 0.75rem 1.25rem;
-  background: var(--white);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-sm);
-  box-shadow: 0 1px 4px rgba(30,58,30,0.06);
-  transition: background 0.15s;
-}
-
-.candidates-list li:hover {
-  background: var(--green-light);
-}
-
-.candidates-list .num {
-  font-weight: 800;
-  color: var(--green-accent);
-  min-width: 2rem;
+  gap: 0.9rem;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
   font-size: 1rem;
+  font-weight: 500;
+}
+
+.candidate-row:last-child {
+  border-bottom: none;
+}
+
+.cnum {
+  font-weight: 900;
+  color: var(--green-accent);
+  font-size: 1rem;
+  min-width: 1.6rem;
+  text-align: right;
 }
 
 /* ===========================
-   VILLAGES
+   VILLAGES — REAL PHOTOS
    =========================== */
 .villages-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  gap: 0.85rem;
 }
 
 .village-card {
-  border-radius: var(--radius);
+  border-radius: 5px;
   overflow: hidden;
   position: relative;
   aspect-ratio: 4/3;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-  transition: transform 0.2s;
-}
-
-.village-card:hover {
-  transform: scale(1.03);
+  border: 2px solid rgba(255,255,255,0.15);
 }
 
 .village-img {
@@ -328,7 +282,7 @@ ul { list-style: none; }
 }
 
 .village-card:hover .village-img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .village-name {
@@ -336,76 +290,132 @@ ul { list-style: none; }
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.75rem 1rem 0.65rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+  padding: 0.55rem 0.75rem 0.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
   color: var(--white);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   text-align: center;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* ===========================
    FOOTER
    =========================== */
 .footer {
-  background: var(--green-dark);
-  color: rgba(255,255,255,0.7);
-  padding: 2.5rem 0;
+  background: var(--green);
+  color: rgba(255,255,255,0.75);
+  padding: 2rem 0;
   text-align: center;
 }
 
 .footer-name {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--white);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.3rem;
 }
 
-.footer-sub {
-  font-size: 0.9rem;
-}
+.footer-sub { font-size: 0.85rem; }
 
 /* ===========================
    RESPONSIVE
    =========================== */
 @media (max-width: 1024px) {
-  .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .villages-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .villages-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .section { padding: 3.5rem 0; }
-
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .candidates-grid {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-
-  .villages-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
+  .section { padding: 2.5rem 0; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .candidates-grid { grid-template-columns: 1fr; }
+  .villages-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero { min-height: 45vh; }
 }
 
 @media (max-width: 480px) {
-  .villages-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
+  .villages-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+}
+
+/* ===========================
+   PRINT STYLES
+   =========================== */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  .candidates-list li {
-    font-size: 0.95rem;
+  body {
+    font-size: 10pt;
+    line-height: 1.45;
+    color: #000;
+    background: #fff;
   }
+
+  /* Hero: keep the photo, it's the top of the leaflet */
+  .hero {
+    min-height: 35vh;
+    page-break-after: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .badge {
+    background: var(--green) !important;
+    color: #fff !important;
+  }
+
+  /* Program section */
+  .section { padding: 1.5rem 0; }
+
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    page-break-inside: avoid;
+  }
+
+  .card {
+    border: 1px solid #888;
+    border-left: 3px solid var(--green);
+    padding: 0.6rem 0.7rem;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .card h3 { font-size: 7.5pt; }
+  .card ul li { font-size: 7.5pt; color: #222; }
+
+  /* Team photo: show but compact */
+  .team-photo-wrap { max-height: 200px; }
+  .team-photo { max-height: 200px; }
+  .team-quote { font-size: 11pt; }
+
+  /* Candidates */
+  .section--candidates { background: #f5f5f5 !important; }
+
+  .candidates-grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+  }
+
+  .candidate-row {
+    font-size: 9pt;
+    padding: 0.35rem 0.5rem;
+  }
+
+  /* Villages */
+  .section--villages { background: var(--green) !important; }
+
+  .villages-grid { grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
+  .village-card { aspect-ratio: 4/3; }
+  .village-name { font-size: 7pt; }
+
+  /* Footer */
+  .footer { padding: 1rem 0; font-size: 8pt; }
+
+  /* Section titles */
+  .section-title { font-size: 12pt; margin-bottom: 1rem; }
 }
