@@ -49,7 +49,7 @@ img { max-width: 100%; display: block; }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to left, rgba(10,30,10,0.75) 0%, rgba(10,30,10,0.3) 50%, transparent 100%);
+  background: linear-gradient(to right, rgba(10,30,10,0.72) 0%, rgba(10,30,10,0.25) 60%, transparent 100%);
 }
 
 .hero-content {
@@ -58,8 +58,7 @@ img { max-width: 100%; display: block; }
   color: var(--white);
   padding: 2.5rem 2.5rem 3rem;
   max-width: 600px;
-  margin-left: auto;
-  text-align: right;
+  text-align: left;
 }
 
 .badge {
@@ -73,7 +72,6 @@ img { max-width: 100%; display: block; }
   padding: 0.3rem 0.9rem;
   border-radius: 999px;
   margin-bottom: 1rem;
-  margin-left: auto;
 }
 
 .hero h1 {
@@ -202,9 +200,9 @@ img { max-width: 100%; display: block; }
   inset: 0;
   z-index: 2;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 2rem 0;
 }
 
 .team-quote {
