@@ -228,9 +228,8 @@ img { max-width: 100%; display: block; }
    CANDIDATES — LEAFLET STYLE
    =========================== */
 .candidates-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.5rem;
+  column-count: 4;
+  column-gap: 0.75rem;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -246,6 +245,9 @@ img { max-width: 100%; display: block; }
   background: #fff;
   font-size: 0.95rem;
   font-weight: 500;
+  margin-bottom: 0.5rem;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
 }
 
 .cnum {
@@ -330,21 +332,21 @@ img { max-width: 100%; display: block; }
    =========================== */
 @media (max-width: 1024px) {
   .cards-grid { grid-template-columns: repeat(2, 1fr); }
-  .candidates-grid { grid-template-columns: repeat(2, 1fr); }
+  .candidates-grid { column-count: 2; }
   .village-card { flex: 0 0 calc((100% - 2 * 0.85rem) / 3); }
 }
 
 @media (max-width: 768px) {
   .section { padding: 2.5rem 0; }
   .cards-grid { grid-template-columns: 1fr; }
-  .candidates-grid { grid-template-columns: repeat(2, 1fr); }
+  .candidates-grid { column-count: 2; }
   .village-card { flex: 0 0 calc((100% - 0.85rem) / 2); }
   .hero { min-height: 45vh; }
   .hero-content { max-width: 100%; padding: 1.5rem 1.5rem 2rem; }
 }
 
 @media (max-width: 480px) {
-  .candidates-grid { grid-template-columns: 1fr; }
+  .candidates-grid { column-count: 1; }
   .village-card { flex: 0 0 calc((100% - 0.85rem) / 2); }
 }
 
